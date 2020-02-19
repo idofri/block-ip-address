@@ -110,19 +110,12 @@ class BlockIpAddress
 
     public function getBlockExpiration()
     {
-        $now = $this->getCurrentTimestamp();
-        return $now - (new DateTime(date_i18n('c')))->modify('-24 hour')->getTimestamp();
+        return DAY_IN_SECONDS;
     }
 
     public function getVisitRateExpiration()
     {
-        $now = $this->getCurrentTimestamp();
-        return $now - (new DateTime(date_i18n('c')))->modify('-30 minutes')->getTimestamp();
-    }
-
-    public function getCurrentTimestamp()
-    {
-        return (new DateTime(date_i18n('c')))->getTimestamp();
+        return MINUTE_IN_SECONDS * 30;
     }
 
     public function getVisits(): int
