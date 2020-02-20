@@ -21,7 +21,7 @@ class BlockIpAddress
         add_filter('wpcf7_submission_is_blacklisted', [$this, 'cf7BeforeSubmission'], 10, 2);
     }
 
-    public function cf7BeforeSubmission($blacklisted, $submission)
+    public function cf7BeforeSubmission($blacklisted, WPCF7_Submission $submission)
     {
         $ipAddress = $submission->get_meta('remote_ip');
         if (!$this->ipAddressExcluded($ipAddress, $submission->get_contact_form())) {
